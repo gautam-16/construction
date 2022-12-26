@@ -491,9 +491,13 @@ exports.getAllEmployeeonProjectByDesignation=async(req,res)=>{
       {[Op.and]:[{projectname:req.query.projectname},{userdesignation:req.query.designation},]}})
       ar=[]
       for(i of employees){
-        ar.push(i.nameofuser) 
-      }
-    return res.status(200).json({ar})
+        // ar.push(i.nameofuser) 
+        let id=i.userid
+     let  name=i.nameofuser
+    let obj={'userid':id,'name':name}
+      ar.push(obj)
+      }   
+    return res.status(200).json(ar)
   } catch (error) {
     return res.status(500).json({message:error.message})
 

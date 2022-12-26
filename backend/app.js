@@ -20,7 +20,7 @@ sequelize.authenticate().then(() => {
     console.log("Database connected!");}).catch((err) => {
         console.log(err)});
 
-app.listen(process.env.PORT,'192.168.1.23',()=>{console.log(`Server running on port ${process.env.PORT}`)})
+app.listen(process.env.PORT,'localhost',()=>{console.log(`Server running on port ${process.env.PORT}`)})
 //'192.168.29.178'
 app.use(fileupoad({useTempFiles:true}))
 
@@ -35,7 +35,6 @@ app.use('/user',user)
 app.use('/project',project)
 app.use('/phase',phase)
 app.use('/task',task)
-
 
 
 module.exports=app;
