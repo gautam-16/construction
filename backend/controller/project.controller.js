@@ -487,12 +487,13 @@ exports.reassignUsertoProject=async(req,res)=>{
 }
 exports.getAllEmployeeonProjectByDesignation=async(req,res)=>{
   try {
-  console.log(req.params.designation)  
-    if(arr){
-      return res.status(200).json(arr)
-      //this is the change
-    }
-    return res.status(404).json({message:"No data found"})
+    const employees=await EmployeesonProject.findAll({where:
+      {[Op.and]:[{projectname:req.query.projectname},{userdesignation:req.query.designation},]}})
+      ar=[]
+      for(i of employees){
+        ar.push(i.nameofuser) 
+      }
+    return res.status(200).json({ar})
   } catch (error) {
     return res.status(500).json({message:error.message})
 
