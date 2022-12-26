@@ -488,7 +488,7 @@ exports.reassignUsertoProject=async(req,res)=>{
 exports.getAllEmployeeonProjectByDesignation=async(req,res)=>{
   try {
     const employees=await EmployeesonProject.findAll({where:
-      {[Op.and]:[{projectname:req.query.projectname},{userdesignation:req.query.designation},]}})
+      {[Op.and]:[{projectname:req.query.projectname},{userdesignation:req.query.designation},{employeestatus:'deployed'}]}})
       ar=[]
       for(i of employees){
         // ar.push(i.nameofuser) 
