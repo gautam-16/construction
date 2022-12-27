@@ -359,7 +359,7 @@ exports.getemployeesremovedfromPhase = async (req, res) => {
 };
 exports.deleteUserFromPhase = async (req, res) => {
   try {
-    const phase = await Phase.findByPk(req.params._id);
+    const phase = await Phase.findByPk(req.params.phaseid);
     if (phase.phasestatus=='onHold') {
       return res.status(404).json("Phase of this task is currently on hold")
     }
